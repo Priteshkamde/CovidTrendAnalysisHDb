@@ -1,7 +1,7 @@
-#Covid Trend Analysis using Harper DataBase
+# Covid Trend Analysis using Harper DataBase
 
 
-#Steps for installation 
+### Steps for installation 
 
 ```create virtual env 
 > python -m venv henv
@@ -19,8 +19,8 @@ install dependencies
 > python manage.py runserver 
 ```
 
-# open browser go to 127.0.0.1:8000
-perform registration
+### In Browser go to 127.0.0.1:8000
+perform registration;
 the website will render Live Covid Trends along with aggregated news from various sources. 
 
 
