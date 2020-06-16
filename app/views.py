@@ -84,10 +84,9 @@ def index(request):
 			data[c].append({'cases':i['cases'],'date':i['date'],'deaths':i['deaths']})
 		c=c+1	
 	print("\n",data[0])
-	dates = sorted(dates)
+
 	labels = '\"'+'\",\"'.join(dates)+"\""
-	cases = cases[:-1]
-	deaths = deaths[:-1]
+	
 	return render(request, 'website/index2.html', {'cluster':cluster,'covid_data':data, 'deaths':deaths, 'labels':labels, 'cases':cases})
 
 def health(request):
@@ -308,7 +307,7 @@ def retrieve_top10_news():
 
 def retrieve_coviddata():
 	request_url = "https://prit-1-priteshkamde24.harperdbcloud.com"
-	payload = "{\r\n  \"operation\":\"sql\",\r\n  \"sql\": \"SELECT SUM(cases) as cases,SUM(deaths) as deaths,date FROM cluster.us_states GROUP BY date\"\r\n}"
+	payload = "{\r\n  \"operation\":\"sql\",\r\n  \"sql\": \"SELECT SUM(cases) as cases,SUM(deaths) as deaths,date FROM cluster.us_states GROUP BY date ORDER BY date ASC\"\r\n}"
 	headers = {'Content-Type': "application/json",'Authorization': "Basic cHlyYXB0b3JzOmhlbGxvMTIz"}
 	response = requests.request("POST", request_url, data=payload, headers=headers)
 	data = response.json()
